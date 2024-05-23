@@ -1,44 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <!--Normalize-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--Css Global-->
-    <link rel="stylesheet" href="assets/css/global.css">
-    <!--Css Pokedex-->
-    <link rel="stylesheet" href="assets/css/pokedex.css">
-    <!--Fonte Roboto-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    <section class="content">
-        <h1>Pokedex</h1>
-        <select name="selectGen" id="selectGen">
-            <option selected value="gen_1">1st Gen</option>
-            <option value="gen_2">2nd Gen</option>
-            <option value="gen_3">3rd Gen</option>
-        </select>
-        <ol class="pokemons" id="pokemons">
-
-        </ol>
-        <div class="pagination">
-            <button id="loadMoreButton" type="button">
-                Load More
-            </button>
-        </div>
-    </section>
-</body>
-<!-- JS -->
-<script src="assets/js/pokemon-model.js"></script>
-<script src="assets/js/poke-api.js"></script>
-<script src="assets/js/main.js"></script>
+<title>Hello OpenCV.js</title>
 
 
-</html>
+<h2>Hello OpenCV.js</h2>
+<p id="status">OpenCV.js is loading...</p>
+<div>
+  <div class="inputoutput">
+    <img id="imageSrc" alt="No Image" />
+    <div class="caption">imageSrc </div>
+  </div>
+  <div class="inputoutput">
+
+    <div class="caption">canvasOutput</div>
+  </div>
+</div>
+
+  let imgElement = document.getElementById('imageSrc');
+  let inputElement = document.getElementById('fileInput');
+  inputElement.addEventListener('change', (e) =&gt; {
+    imgElement.src = URL.createObjectURL(e.target.files[0]);
+  }, false);
+  imgElement.onload = function () {
+    let mat = cv.imread(imgElement);
+    cv.imshow('canvasOutput', mat);
+    mat.delete();
+  };
+  var Module = {
+    // https://emscripten.org/docs/api_reference/module.html#Module.onRuntimeInitialized
+    onRuntimeInitialized() {
+      document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+    }
+  };
