@@ -104,3 +104,25 @@ main {
 .testimonial strong {
     font-weight: bold;
 }
+
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 600px) {
+    header {
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .advertisement,
+    .form-container,
+    .testimonials {
+        margin-bottom: 10px;
+        padding: 15px;
+    }
+
+    .form-container input {
+        width: calc(100% - 20px);
+    }
+}
